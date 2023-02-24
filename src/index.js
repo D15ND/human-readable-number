@@ -34,23 +34,36 @@ module.exports = function toReadable (number) {
     '90': 'ninety'
   }
 
-  if (len===2 && numStr in numObj) {
+  if (len===1) {
     result=numObj[numStr];
-  } else if (len===1 && numStr in numObj) {
-    result=numObj[numStr];
+  } else if (len===2) {
+    if (numStr in numObj) {
+      result=numObj[numStr];
+    } else {
+      let first=numStr[0]+0;
+      let second=numStr[1];
+      result=numObj[first]+' '+numObj[second];
+    } 
   } else if (len===3) {
+    if (numStr.slice(1,3) in numObj) {
     let first=numStr[0];
     let second=numStr.slice(1,3);
-    result=numObj[first]+' hundred '+numObj[second];
-  } else if (len===2) {
-    let first=numStr[0]+0;
-    let second=numStr[1];
-    result=numObj[first]+' '+numObj[second];
-  } else if (len===3) {
-    let first=numStr[0];
-    let second=numStr[1]+0;
-    let third=numStr[2];
-    result=numObj[first]+' hundred '+numObj[second]+' '+numObj[third];
+    result=numObj[first]+' hundred ' + numObj[second];
+    } else if (numStr[2]==='0') {
+      let first=numStr[0];
+      result=numObj[first]+' hundred';
+    } else if (numStr[1]==='0') {
+      let first=numStr[0];
+      let second=numStr[2];
+      result=numObj[first]+' hundred ' + numObj[second];
+      console.log(result);
+    }
+    else {
+      let first=numStr[0];
+      let second=numStr[1]+0;
+      let third=numStr[2]
+      result=numObj[first]+' hundred ' + numObj[second]+' '+ numObj[third];
+    }
   }
   return result;
 }
