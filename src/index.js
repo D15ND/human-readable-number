@@ -42,7 +42,15 @@ module.exports = function toReadable (number) {
     let first=numStr[0];
     let second=numStr.slice(1,3);
     result=numObj[first]+' hundred '+numObj[second];
-    // result=numObj[numStr[0]]+' hundred'+numObj[numStr[1]];
+  } else if (len===2) {
+    let first=numStr[0]+0;
+    let second=numStr[1];
+    result=numObj[first]+' '+numObj[second];
+  } else if (len===3) {
+    let first=numStr[0];
+    let second=numStr[1]+0;
+    let third=numStr[2];
+    result=numObj[first]+' hundred '+numObj[second]+' '+numObj[third];
   }
   return result;
 }
