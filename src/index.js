@@ -38,6 +38,11 @@ module.exports = function toReadable (number) {
     result=numObj[numStr];
   } else if (len===1 && numStr in numObj) {
     result=numObj[numStr];
+  } else if (len===3) {
+    let first=numStr[0];
+    let second=numStr.slice(1,3);
+    result=numObj[first]+' hundred '+numObj[second];
+    // result=numObj[numStr[0]]+' hundred'+numObj[numStr[1]];
   }
   return result;
 }
