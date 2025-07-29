@@ -56,7 +56,7 @@ module.exports = function toReadable(number) {
       const first = numStr[0];
       const second = numStr[2];
       result = `${numObj[first]} hundred ${numObj[second]}`;
-      console.log(result);
+      // console.log(result);
     } else {
       const first = numStr[0];
       const second = numStr[1] + 0;
